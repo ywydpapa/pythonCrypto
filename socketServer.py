@@ -26,6 +26,7 @@ print('connected client addr:', addr)
 # row = []
 
 data = ''
+cnt = 0
 
 while True:
     data = client_soc.recv(100)
@@ -37,7 +38,9 @@ while True:
         print("-----")
         if len(msg) == 100:
             dmsg = fernet.decrypt(data).decode('utf-8')
+            print('No:',cnt)
             print('Decrypt Message:', dmsg)
+            cnt = cnt + 1
     elif len(msg) == 4:
         break
     else:
